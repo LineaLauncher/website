@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from "react"
-// import { ConnectButton } from "@/rainbow"
+import { ConnectButton } from "@rainbow-me/rainbowkit"
 
 import NavButton from "./NavButton"
 import Link from "next/link"
@@ -38,7 +38,8 @@ export default function Nav() {
             </div>
             <div
                 className={clsx(
-                    "w-full md:w-auto md:flex md:items-center md:justify-end space-y-2 md:space-y-0 md:space-x-4 pl-2 md:pl-0", isOpen ? "block" : "hidden"
+                    "w-full md:w-auto md:flex md:items-center md:justify-end space-y-2 md:space-y-0 md:space-x-4 pl-2 md:pl-0",
+                    isOpen ? "block" : "hidden"
                 )}
             >
                 <div className="flex flex-col md:flex-row items-start md:items-center">
@@ -47,7 +48,7 @@ export default function Nav() {
                     <NavButton text="How it Works" path="/demo" />
                     <NavButton text="Staking" path="/staking" />
                     <div className="rounded-md m-auto px-4 py-2 border-4 border-transparent transition-all duration-200 ease-in-out hover:border-white hover:-translate-x-1 hover:translate-y-1 border-l-2 border-t-2 border-b-2 hover:border-r-4 hover:border-t-2 hover:border-b-2">
-                        text!
+                        <ConnectButton />
                     </div>
                 </div>
             </div>

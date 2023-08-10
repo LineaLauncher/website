@@ -6,6 +6,7 @@ import type { Metadata } from "next"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import clsx from "clsx"
+import EthereumProvider from "@/Providers/EthereumProvider"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
         "LineaLauncher Launchpad",
     ],
     themeColor: "#000000",
+    icons: {
+        icon: "/favicon.ico",
+    },
     // openGraph: {
     //     type: "website",
     //     locale: "en_US",
@@ -39,11 +43,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html lang="en">
             <body className={clsx("text-white bg-black", robotoMono.className)}>
-                <header>
-                    <Navbar />
-                </header>
-                {children}
-                <Footer />
+                <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
+                    <header>
+                        <Navbar />
+                    </header>
+                    {children}
+                    <Footer />
+                </EthereumProvider>
             </body>
         </html>
     )
