@@ -28,10 +28,6 @@ export const metadata: Metadata = {
     //     title: "LineaLauncher",
     //     description: "Decentralized IDO Platform on Linea",
     // },
-    robots: {
-        index: true,
-        follow: true,
-    }
 }
 
 export default function RootLayout({
@@ -40,7 +36,7 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className="bg-black">
+        <html lang="en" className="bg-black text-white">
             <body className={robotoMono.className}>{children}</body>
         </html>
     )
