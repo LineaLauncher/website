@@ -1,6 +1,10 @@
 import "./globals.css"
-import type { Metadata } from "next"
+
 import { Roboto_Mono } from "next/font/google"
+import type { Metadata } from "next"
+
+import Navbar from "@/components/Navbar"
+import Footer from "@/components/Footer"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
@@ -36,8 +40,14 @@ export default function RootLayout({
     children: React.ReactNode
 }) {
     return (
-        <html lang="en" className="bg-black text-white">
-            <body className={robotoMono.className}>{children}</body>
+        <html lang="en">
+            <body className={robotoMono.className}>
+                <header>
+                    <Navbar />
+                </header>
+                {children}
+                <Footer />
+            </body>
         </html>
     )
 }
