@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+.vscode
+contracts
+.prettierrc
+firebase.json
+firebase-debug.log
+.firebase
+.eslintrc.json
