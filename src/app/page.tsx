@@ -19,7 +19,7 @@ export default function Home() {
 
             <section className="border-t border-gray-700 my-8 md:my-16 py-8 md:py-16 px-4 md:px-24 flex flex-col justify-center">
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
-                    <div className="flex-grow px-2 md:px-8 mt-4 flex flex-col justify-center">
+                    <div className="flex-grow mt-4 flex flex-col justify-center">
                         <h2 className="text-2xl md:text-4xl font-bold mb-4">How It Works</h2>
                         <p className="text-sm md:text-lg">
                             Launching your project on LineaLauncher is a simple and straightforward process. You provide
