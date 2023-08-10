@@ -5,6 +5,7 @@ import type { Metadata } from "next"
 
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
+import clsx from "clsx"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
@@ -34,14 +35,10 @@ export const metadata: Metadata = {
     // },
 }
 
-export default function RootLayout({
-    children,
-}: {
-    children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={robotoMono.className}>
+            <body className={clsx("text-white bg-black", robotoMono.className)}>
                 <header>
                     <Navbar />
                 </header>
