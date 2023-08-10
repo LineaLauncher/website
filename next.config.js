@@ -5,6 +5,21 @@ const nextConfig = {
         config.externals.push("pino-pretty", "lokijs", "encoding")
         return config
     },
+    plugins: [
+        "autoprefixer",
+        [
+            "@fullhuman/postcss-purgecss",
+            {
+                content: ["./pages/**/*.js", "./components/**/*.js"],
+                defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+                safelist: {
+                    standard: ["html", "body"],
+                    deep: [],
+                    greedy: [],
+                },
+            },
+        ],
+    ],
 }
 
 module.exports = nextConfig
