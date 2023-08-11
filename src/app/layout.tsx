@@ -6,7 +6,7 @@ import type { Metadata } from "next"
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import clsx from "clsx"
-import EthereumProvider from "@/Providers/EthereumProvider"
+import EthereumProvider from "@/providers/EthereumProvider"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
