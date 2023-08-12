@@ -27,6 +27,14 @@ export default function Footer() {
                         >
                             <FaTelegramPlane size="24px" />
                         </a>
+                        <a
+                            href="mailto:support@linealauncher.com"
+                            className="hover:text-gray-400 text-sm"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            support@linealauncher.com
+                        </a>
                     </div>
                 </div>
             </div>

@@ -1,10 +1,13 @@
 import "server-only"
 
-import { type Timestamp, collection, getDocs, getFirestore } from "firebase/firestore"
+import { type Timestamp, collection, getDocs, getFirestore, doc, getDoc } from "firebase/firestore"
 import { FirebaseProjectResponse, Project } from "@/types/project"
 import { initializeApp } from "firebase/app"
 
 import validateProject from "./validateproject"
+import { PerProjectInvestmentsFirebaseResponse } from "@/types/perprojectinvestments"
+import discardInvalidInvestments from "./discardInvalidInvestments"
+import transformInvestments from "./transformInvestments"
 
 const FIREBASE_PUBLIC_CONFIG = {
     apiKey: "AIzaSyCiUQXksk7c_n4divsgzKJS2qVu_wN6N4Y",
@@ -39,6 +42,23 @@ export async function getProjects() {
     const pastProjects = projects.filter(project => new Date(project.roundOneStartDate) > new Date())
 
     return { upcomingAndCurrentProjects, pastProjects }
+}
+
+export async function getPerProjectInvestments(address: string) {
+    const docRef = doc(db, "investments", address.toLowerCase())
+    const docSnapshot = await getDoc(docRef)
+
+    const investmentsPerProject = (
+        docSnapshot.exists() ? docSnapshot.data() : null
+    ) as Partial<PerProjectInvestmentsFirebaseResponse> | null
+
+    if (!investmentsPerProject) {
+        return null
+    }
+
+    const validInvestments = discardInvalidInvestments(investmentsPerProject)
+
+    return transformInvestments(validInvestments)
 }
 
 function transformData(data: Partial<FirebaseProjectResponse>): Partial<Project> | null {
