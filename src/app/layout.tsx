@@ -42,13 +42,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
         <html lang="en">
-            <body className={clsx("text-white bg-black", robotoMono.className)}>
+            <body className={clsx("bg-black min-h-screen", robotoMono.className)}>
                 <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
-                    <header>
-                        <Navbar />
-                    </header>
-                    {children}
-                    <Footer />
+                    <div className="min-h-screen flex flex-col text-white">
+                        <header>
+                            <Navbar />
+                        </header>
+                        {children}
+                        <Footer />
+                    </div>
                 </EthereumProvider>
             </body>
         </html>

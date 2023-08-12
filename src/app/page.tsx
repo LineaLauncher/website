@@ -2,7 +2,7 @@ import Link from "next/link"
 
 export default function Home() {
     return (
-        <main className="p-4 md:p-8 md:px-16 flex-grow">
+        <main className="flex-grow p-4 md:p-8 md:px-16">
             <section className="flex flex-col space-y-4 md:space-y-8 mb-8 mt-8 md:mt-16 px-4 md:px-24">
                 <h1 className="text-3xl md:text-6xl font-bold items-center">Empowering Innovation on Linea</h1>
                 <p className="text-sm md:text-lg">
