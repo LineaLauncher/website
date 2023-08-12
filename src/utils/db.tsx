@@ -1,6 +1,6 @@
 import "server-only"
 
-import { collection, getDocs, getFirestore } from "firebase/firestore"
+import { type Timestamp, collection, getDocs, getFirestore } from "firebase/firestore"
 import { FirebaseProjectResponse, Project } from "@/types/project"
 import { initializeApp } from "firebase/app"
 
@@ -17,29 +17,6 @@ const FIREBASE_PUBLIC_CONFIG = {
 
 const firebaseApp = initializeApp(FIREBASE_PUBLIC_CONFIG)
 const db = getFirestore(firebaseApp)
-
-function transformData(data: Partial<FirebaseProjectResponse>): Partial<Project> | null {
-    if (
-        !data ||
-        !data.roundOneStartDate ||
-        !data.roundTwoStartDate ||
-        !data.saleEndDate ||
-        !data.maximumRefundTime ||
-        !data.vestingTimestamps
-    ) {
-        return null
-    }
-
-    const { roundOneStartDate, roundTwoStartDate, saleEndDate, maximumRefundTime, vestingTimestamps } = data
-    return {
-        ...data,
-        roundOneStartDate: roundOneStartDate.toDate(),
-        roundTwoStartDate: roundTwoStartDate.toDate(),
-        saleEndDate: saleEndDate.toDate(),
-        maximumRefundTime: maximumRefundTime.toDate(),
-        vestingTimestamps: vestingTimestamps.map(t => t.toDate()),
-    }
-}
 
 export async function getProjects() {
     const projectsSnapshot = await getDocs(collection(db, "projects"))
@@ -58,8 +35,44 @@ export async function getProjects() {
 
     projects.sort((a, b) => new Date(a.roundOneStartDate).getTime() - new Date(b.roundOneStartDate).getTime())
 
-    const upcomingAndCurrentProjects = projects.filter(project => new Date(project.roundOneStartDate) >= new Date())
-    const pastProjects = projects.filter(project => new Date(project.roundOneStartDate) < new Date())
+    const upcomingAndCurrentProjects = projects.filter(project => new Date(project.roundOneStartDate) <= new Date())
+    const pastProjects = projects.filter(project => new Date(project.roundOneStartDate) > new Date())
 
     return { upcomingAndCurrentProjects, pastProjects }
+}
+
+function transformData(data: Partial<FirebaseProjectResponse>): Partial<Project> | null {
+    if (!data || !hasValidDates(data)) {
+        return null
+    }
+
+    const { roundOneStartDate, roundTwoStartDate, saleEndDate, maximumRefundTime, vestingTimestamps } = data
+    return {
+        ...data,
+        roundOneStartDate: roundOneStartDate.toDate(),
+        roundTwoStartDate: roundTwoStartDate.toDate(),
+        saleEndDate: saleEndDate.toDate(),
+        maximumRefundTime: maximumRefundTime.toDate(),
+        vestingTimestamps: vestingTimestamps.map(t => t.toDate()),
+    }
+}
+
+function hasValidDates(data: Partial<FirebaseProjectResponse>): data is Partial<FirebaseProjectResponse> & {
+    roundOneStartDate: Timestamp
+    roundTwoStartDate: Timestamp
+    saleEndDate: Timestamp
+    maximumRefundTime: Timestamp
+    vestingTimestamps: Timestamp[]
+} {
+    if (
+        !data.roundOneStartDate ||
+        !data.roundTwoStartDate ||
+        !data.saleEndDate ||
+        !data.maximumRefundTime ||
+        !data.vestingTimestamps
+    ) {
+        return false
+    }
+
+    return true
 }
