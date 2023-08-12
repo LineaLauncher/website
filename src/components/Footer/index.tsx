@@ -1,6 +1,8 @@
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+import { FaTelegramPlane } from "@react-icons/all-files/fa/FaTelegramPlane"
+
 import FooterDivider from "./FooterDivider"
 import FooterLinkItem from "./FooterLinkItem"
-import Image from "next/image"
 
 export default function Footer() {
     return (
@@ -9,11 +11,21 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row items-center md:space-x-4">
                     <p className="mb-2 md:mb-0 md:mr-4 text-center">&copy; 2023 LineaLauncher</p>
                     <div className="flex flex-row md:flex-row items-center space-x-2 md:space-x-4">
-                        <a href="https://twitter.com/linealauncher" className="hover:text-gray-400">
-                            <Image src="/twitter.svg" width={24} height={24} alt="Twitter" />
+                        <a
+                            href="https://twitter.com/linealauncher"
+                            className="hover:text-gray-400"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaTwitter size="24px" />
                         </a>
-                        <a href="https://t.me/linealauncher" className="hover:text-gray-400">
-                            <Image src="/telegram.svg" width={24} height={24} alt="Telegram" />
+                        <a
+                            href="https://t.me/linealauncher"
+                            className="hover:text-gray-400"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <FaTelegramPlane size="24px" />
                         </a>
                     </div>
                 </div>
