@@ -8,6 +8,8 @@ interface CommonProjectResponse {
     paymentTokenAddress: string
     projectTokenAddress: string
     contractAddress: string
+    paymentTokenTicker: string
+    paymentTokenLogo: string
     paymentTokenDecimals: number
     tokensPerPaymentToken: number
     projectTokenDecimals: number

@@ -11,6 +11,8 @@ export default function validateProject(project: Partial<Project>): project is P
         typeof project.name !== "string" ||
         typeof project.logo !== "string" ||
         typeof project.id !== "string" ||
+        typeof project.paymentTokenTicker !== "string" ||
+        typeof project.paymentTokenLogo !== "string" ||
         (project.twitter && typeof project.twitter !== "string") ||
         (project.telegram && typeof project.telegram !== "string") ||
         (project.website && typeof project.website !== "string") ||
