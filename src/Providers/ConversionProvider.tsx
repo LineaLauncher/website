@@ -1,6 +1,8 @@
 "use client"
 
-import { createContext, useMemo } from "react"
+import memoize from "lodash.memoize"
+
+import { createContext, useCallback, useMemo } from "react"
 
 type ConversionProviderProps = {
     children: React.ReactNode
@@ -20,29 +22,37 @@ export default function ConversionProvider({
     paymentTokenDecimals,
     projectTokenDecimals,
 }: ConversionProviderProps) {
-    const paymentTokenToNum = useMemo(() => {
-        return (n: BigInt | bigint) => {
-            return Number(n.valueOf()) / 10 ** paymentTokenDecimals
-        }
-    }, [paymentTokenDecimals])
+    const paymentTokenToNum = useCallback(
+        (n: BigInt | bigint) => {
+            const convert = memoize((value: BigInt | bigint) => Number(value.valueOf()) / 10 ** paymentTokenDecimals)
+            return convert(n)
+        },
+        [paymentTokenDecimals]
+    )
 
-    const numToPaymentToken = useMemo(() => {
-        return (n: number) => {
-            return BigInt(n * 10 ** paymentTokenDecimals)
-        }
-    }, [paymentTokenDecimals])
+    const numToPaymentToken = useCallback(
+        (n: number) => {
+            const convert = memoize((value: number) => BigInt(value * 10 ** paymentTokenDecimals))
+            return convert(n)
+        },
+        [paymentTokenDecimals]
+    )
 
-    const projectTokenToNum = useMemo(() => {
-        return (n: BigInt | bigint) => {
-            return Number(n.valueOf()) / 10 ** projectTokenDecimals
-        }
-    }, [projectTokenDecimals])
+    const projectTokenToNum = useCallback(
+        (n: BigInt | bigint) => {
+            const convert = memoize((value: BigInt | bigint) => Number(value.valueOf()) / 10 ** projectTokenDecimals)
+            return convert(n)
+        },
+        [projectTokenDecimals]
+    )
 
-    const numToProjectToken = useMemo(() => {
-        return (n: number) => {
-            return BigInt(n * 10 ** projectTokenDecimals)
-        }
-    }, [projectTokenDecimals])
+    const numToProjectToken = useCallback(
+        (n: number) => {
+            const convert = memoize((value: number) => BigInt(value * 10 ** projectTokenDecimals))
+            return convert(n)
+        },
+        [projectTokenDecimals]
+    )
 
     return (
         <ConversionContext.Provider

@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react"
 import { useAccount, useContractRead } from "wagmi"
 import type { Project } from "@/types/project"
 
-const abi = [
+const AMOUNT_INVESTED_IN_ROUND_ONE_ABI = [
     {
         inputs: [
             {
@@ -23,6 +23,9 @@ const abi = [
         stateMutability: "view",
         type: "function",
     },
+]
+
+const AMOUNT_INVESTED_IN_ROUND_TWO_ABI = [
     {
         inputs: [
             {
@@ -52,7 +55,7 @@ function useUserInvestmentHelper(contractAddress: string, address: `0x${string}`
 
     const roundOneInvestedWatcher = useContractRead({
         address: contractAddress as `0x${string}`,
-        abi: abi,
+        abi: AMOUNT_INVESTED_IN_ROUND_ONE_ABI,
         functionName: "amountInvestedInRoundOne",
         args: [address],
         watch: true,
@@ -60,7 +63,7 @@ function useUserInvestmentHelper(contractAddress: string, address: `0x${string}`
 
     const roundTwoInvestedWatcher = useContractRead({
         address: contractAddress as `0x${string}`,
-        abi: abi,
+        abi: AMOUNT_INVESTED_IN_ROUND_TWO_ABI,
         functionName: "amountInvestedInRoundTwo",
         args: [address],
         watch: true,
@@ -85,7 +88,7 @@ export default function useUserInvestment(
     numToPaymentToken: (n: number) => bigint,
     paymentTokenToNum: (n: bigint | BigInt) => number
 ) {
-    const [totalUserInvestment, setTotalUserInvestment] = useState<TotalUserInvestment | undefined>()
+    const [totalUserInvestment, setTotalUserInvestment] = useState<TotalUserInvestmentAndMerkle | undefined>()
 
     const { address } = useAccount()
 
@@ -126,6 +129,7 @@ export default function useUserInvestment(
                         number: paymentTokenToNum(totalInvestedInRoundOne),
                     },
                     alloType: roundOneAlloType,
+                    proof: perProjectInvestments[project.id].round1.proof,
                 },
                 round2: {
                     maximum: {
@@ -137,6 +141,7 @@ export default function useUserInvestment(
                         number: paymentTokenToNum(totalInvestedInRoundTwo),
                     },
                     alloType: roundTwoAlloType,
+                    proof: perProjectInvestments[project.id].round2.proof,
                 },
             })
         }

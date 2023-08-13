@@ -1,4 +1,4 @@
-type TotalUserInvestment = {
+type TotalUserInvestmentAndMerkle = {
     round1: {
         maximum: {
             number: number
@@ -8,6 +8,7 @@ type TotalUserInvestment = {
             number: number
             bigint: bigint
         }
+        proof?: string[]
         alloType: "merkle" | "public"
     }
     round2: {
@@ -19,6 +20,7 @@ type TotalUserInvestment = {
             number: number
             bigint: bigint
         }
+        proof?: string[]
         alloType: "merkle" | "public"
     }
 }

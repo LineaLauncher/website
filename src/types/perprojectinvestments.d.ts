@@ -1,3 +1,5 @@
+type BigNumber = number & { readonly __brand: unique symbol }
+
 export type InvestmentFirebaseResponse = {
     amount1: number
     amount2: number
@@ -12,11 +14,11 @@ export type PerProjectInvestmentsFirebaseResponse = {
 export type PerProjectInvestments = {
     [projectName: string]: {
         round1: {
-            maximum: number
+            maximum: BigNumber
             proof: string[]
         }
         round2: {
-            maximum: number
+            maximum: BigNumber
             proof: string[]
         }
     }
