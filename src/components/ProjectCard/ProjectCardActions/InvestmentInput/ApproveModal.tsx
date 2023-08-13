@@ -201,7 +201,7 @@ const ApproveModal = ({
             <div className="flex flex-col space-y-2">
                 <h2 className="text-center">Round 1 + 2 Allocation: {maximumInvestment}</h2>
                 <p className="text-gray-400 text-center">This action will set the approval, not increase it!</p>
-                <div className="flex items-center space-x-2 border-2 border-gray-800 rounded-md p-2 bg-black">
+                <div className="flex flex-row items-center space-x-2 border-2 border-gray-800 rounded-md p-2 bg-black">
                     <Image src={paymentTokenLogo} width={24} height={24} alt={`${paymentTokenTicker} logo`} />
                     <input
                         type="text"

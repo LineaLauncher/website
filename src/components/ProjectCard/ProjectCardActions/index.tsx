@@ -24,11 +24,7 @@ export default function ProjectCardActions({ project }: ProjectCardActionsProps)
 
     const { status } = useTimer(project.roundOneStartDate, project.roundTwoStartDate, project.saleEndDate)
 
-    const { totalUserInvestment, totalInvestedInRoundOne, totalInvestedInRoundTwo } = useUserInvestment(
-        project,
-        numToPaymentToken,
-        paymentTokenToNum
-    )
+    const { totalUserInvestment } = useUserInvestment(project, numToPaymentToken, paymentTokenToNum)
 
     const { address } = useAccount()
     const isConnected = address !== undefined
@@ -74,7 +70,7 @@ export default function ProjectCardActions({ project }: ProjectCardActionsProps)
             return (
                 <div className="flex items-center space-x-2">
                     <div className="flex items-center border-2 border-gray-800 rounded-md p-2 w-full bg-black">
-                        <span>Loading...</span>
+                        <span>{investmentText}</span>
                     </div>
                     <button
                         className="rounded-md px-4 py-2 border-2 border-r-4 border-transparent transition-all duration-100 ease-in-out hover:border-white hover:border-r-4 hover:-translate-x-1 hover:translate-y-1"
@@ -119,7 +115,7 @@ export default function ProjectCardActions({ project }: ProjectCardActionsProps)
         }
 
         return <SaleEndedBox project={project} />
-    }, [project, status, totalUserInvestment])
+    }, [investmentText, project, status, totalUserInvestment])
 
     return (
         <>
@@ -136,11 +132,21 @@ export default function ProjectCardActions({ project }: ProjectCardActionsProps)
                 </span>
             </p>
             <p>Vesting: {project.vesting}</p>
-            {isConnected ? (
-                renderInvestmentInput
+            {isMounted ? (
+                isConnected ? (
+                    renderInvestmentInput
+                ) : (
+                    <div className="flex justify-center items-center rounded-md m-auto">
+                        <ConnectButton />
+                    </div>
+                )
             ) : (
-                <div className="flex justify-center items-center rounded-md m-auto">
-                    <ConnectButton />
+                <div className="flex items-center space-x-2">
+                    <div className="flex items-center m-auto justify-center border-2 border-gray-800 rounded-md p-2 w-full bg-black">
+                        <span className="text-sm text-center">
+                            loading...
+                        </span>
+                    </div>
                 </div>
             )}
         </>

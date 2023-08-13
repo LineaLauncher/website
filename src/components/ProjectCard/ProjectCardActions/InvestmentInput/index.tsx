@@ -137,7 +137,7 @@ export default function InvestmentInput({ project, saleStatus, totalUserInvestme
     }
 
     const investmentInput = (
-        <div className="flex items-center border-2 border-gray-800 rounded-md p-2 w-4/5 bg-black">
+        <div className="flex flex-row space-x-2 items-center border-2 border-gray-800 rounded-md p-2 w-4/5 bg-black">
             <Image src={project.paymentTokenLogo} width={24} height={24} alt={`${project.paymentTokenTicker} logo`} />
             <input
                 type="text"
