@@ -1,4 +1,4 @@
-FROM node:20-alpine AS base
+FROM node:18-alpine AS base
 
 FROM base AS deps
 RUN apk add --no-cache libc6-compat
@@ -33,7 +33,6 @@ USER nextjs
 
 COPY --from=builder /app/public ./public
 
-# https://nextjs.org/docs/advanced-features/output-file-tracing
 COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 
