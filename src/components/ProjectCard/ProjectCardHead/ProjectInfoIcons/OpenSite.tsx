@@ -41,7 +41,11 @@ const getRefundSVG = (
                 onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseMove}
             >
-                <FaSlash textAnchor="middle" alignmentBaseline="middle" className="rotate-90 text-[0.9em] ml-[0.05rem] mb-[0.125rem]" />
+                <FaSlash
+                    textAnchor="middle"
+                    alignmentBaseline="middle"
+                    className="rotate-90 text-[0.9em] ml-[0.05rem] mb-[0.125rem]"
+                />
                 <FaUndo
                     textAnchor="middle"
                     alignmentBaseline="middle"
@@ -190,14 +194,23 @@ export default function OpenSite({ url, siteType, description, value, className 
     }
 
     return (
-        <a href={url} target="_blank" rel="noopener noreferrer" className={clsx("cursor-pointer", className)}>
+        <a
+            href={url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={clsx("cursor-pointer", className)}
+            aria-label={description || `Open ${siteType.charAt(0).toUpperCase() + siteType.slice(1)}`}
+        >
             {siteType === "public"
                 ? getPublicSVG(value as boolean[], handleMouseEnter, handleMouseLeave, handleMouseMove)
                 : siteType === "refund"
                 ? getRefundSVG(value as boolean, handleMouseEnter, handleMouseLeave, handleMouseMove)
                 : getSVG(siteType, handleMouseEnter, handleMouseLeave, handleMouseMove)}
             {showTooltip && (
-                <div style={tooltipStyle} className="absolute bg-gray-950 text-white p-1 rounded flex flex-row gap-x-2 items-center">
+                <div
+                    style={tooltipStyle}
+                    className="absolute bg-gray-950 text-white p-1 rounded flex flex-row gap-x-2 items-center"
+                >
                     {description || `Open ${siteType.charAt(0).toUpperCase() + siteType.slice(1)}`}
                     <FaExternalLinkAlt />
                 </div>
