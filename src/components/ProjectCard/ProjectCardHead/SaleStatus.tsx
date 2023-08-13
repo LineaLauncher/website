@@ -33,10 +33,10 @@ export default function SaleStatus({ roundOneStartDate, roundTwoStartDate, saleE
 
     return (
         <>
-            <p className="text-sm text-gray-500">Sale Status: {saleStatusText(status)}</p>
-            <p className="text-sm text-gray-500">
+            <p className="text-sm text-gray-200">Sale Status: {saleStatusText(status)}</p>
+            <p className="text-sm text-gray-200">
                 {status === "saleEnded" ? "Ended " : "Time left: "}
-                <span className="text-gray-400 font-semibold">{hasMounted ? timeString : "0d 0h 0m 0s"}</span>
+                <span className="text-gray-100 font-semibold">{hasMounted ? timeString : "0d 0h 0m 0s"}</span>
                 {status === "saleEnded" && " ago"}
             </p>
         </>

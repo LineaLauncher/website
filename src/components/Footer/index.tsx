@@ -16,6 +16,7 @@ export default function Footer() {
                             className="hover:text-gray-400"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Twitter"
                         >
                             <FaTwitter size="24px" />
                         </a>
@@ -24,6 +25,7 @@ export default function Footer() {
                             className="hover:text-gray-400"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Telegram"
                         >
                             <FaTelegramPlane size="24px" />
                         </a>
@@ -32,6 +34,7 @@ export default function Footer() {
                             className="hover:text-gray-400 text-sm"
                             target="_blank"
                             rel="noopener noreferrer"
+                            aria-label="Email"
                         >
                             support@linealauncher.com
                         </a>

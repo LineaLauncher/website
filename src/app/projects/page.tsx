@@ -37,8 +37,7 @@ export default async function ProjectsPage() {
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-    // metadataBase: {
-    // }
+    metadataBase: new URL("https://linealauncher.com"),
     title: "LineaLauncher",
     description: "See and invest in IDOs and projects on LineaLauncher, a decentralized IDO platform on Linea.",
     applicationName: "LineaLauncher",
@@ -54,6 +53,22 @@ export const metadata: Metadata = {
     ],
     themeColor: "#000000",
     icons: {
-        icon: "favicon.ico",
+        icon: "/favicon.svg",
+        apple: "/apple-touch-icon.png",
+    },
+    manifest: "/manifest.json",
+    twitter: {
+        site: "@linealauncher",
+        creator: "@linealauncher",
+        images: "/linealauncher.png",
+    },
+    openGraph: {
+        type: "website",
+        url: "https://linealauncher.com",
+        locale: "en",
+        title: "LineaLauncher",
+        description: "A Decentralized IDO Platform on Linea",
+        siteName: "LineaLauncher",
+        images: "/linealauncher.png",
     },
 }

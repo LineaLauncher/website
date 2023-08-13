@@ -11,8 +11,7 @@ const Staking = () => {
 export default Staking
 
 export const metadata: Metadata = {
-    // metadataBase: {
-    // }
+    metadataBase: new URL("https://linealauncher.com"),
     title: "LineaLauncher",
     description:
         "Stake your $LLR to invest in projects on LineaLauncher, a decentralized IDO platform on Linea, works.",
@@ -29,6 +28,22 @@ export const metadata: Metadata = {
     ],
     themeColor: "#000000",
     icons: {
-        icon: "favicon.ico",
+        icon: "/favicon.svg",
+        apple: "/apple-touch-icon.png",
+    },
+    manifest: "/manifest.json",
+    twitter: {
+        site: "@linealauncher",
+        creator: "@linealauncher",
+        images: "/linealauncher.png",
+    },
+    openGraph: {
+        type: "website",
+        url: "https://linealauncher.com",
+        locale: "en",
+        title: "LineaLauncher",
+        description: "A Decentralized IDO Platform on Linea",
+        siteName: "LineaLauncher",
+        images: "/linealauncher.png",
     },
 }
