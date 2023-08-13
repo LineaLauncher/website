@@ -41,11 +41,11 @@ const getRefundSVG = (
                 onMouseLeave={onMouseLeave}
                 onMouseMove={onMouseMove}
             >
-                <FaSlash textAnchor="middle" alignmentBaseline="middle" />
+                <FaSlash textAnchor="middle" alignmentBaseline="middle" className="rotate-90 text-[0.9em] ml-[0.05rem] mb-[0.125rem]" />
                 <FaUndo
                     textAnchor="middle"
                     alignmentBaseline="middle"
-                    style={{ fontSize: "0.8em", position: "absolute", left: ".1em", bottom: ".2em" }}
+                    style={{ fontSize: "0.8em", position: "absolute", left: ".15em", bottom: ".25em" }}
                 />
             </span>
         )
