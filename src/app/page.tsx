@@ -1,3 +1,4 @@
+import ProjectCardDemo from "@/components/ProjectCardDemo"
 import Link from "next/link"
 
 export default function Home() {
@@ -21,13 +22,13 @@ export default function Home() {
                 <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-4">
                     <div className="flex-grow mt-4 flex flex-col justify-center">
                         <h2 className="text-2xl md:text-4xl font-bold mb-4">How It Works</h2>
-                        <p className="text-sm md:text-lg">
+                        <p className="text-sm md:text-lg md:pr-2">
                             Launching your project on LineaLauncher is a simple and straightforward process. You provide
                             the details of your project, set your fundraising goals, and we take care of the rest.
                             Investors can browse through the projects, learn more about them, and invest directly from
                             LineaLauncher.
                         </p>
-                        <div className="flex flex-col md:flex-row md:space-x-2">
+                        <div className="flex flex-col md:flex-row md:space-x-2 pr-2">
                             <Link
                                 href="/projects"
                                 className="inline-block mt-2 md:mt-4 px-2 md:px-6 py-1 md:py-2 text-sm md:text-lg font-semibold border-2 border-white rounded hover:bg-white hover:text-black transition-colors"
@@ -42,7 +43,9 @@ export default function Home() {
                             </Link>
                         </div>
                     </div>
-                    <div className="w-full md:w-1/2 flex justify-center items-center">{/* <ProjectCardDemo /> */}</div>
+                    <div className="w-full md:w-1/2 flex justify-center items-center">
+                        <ProjectCardDemo />
+                    </div>
                 </div>
             </section>
 

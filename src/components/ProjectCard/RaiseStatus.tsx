@@ -26,7 +26,7 @@ export default function RaiseStatus({ project }: RaiseStatusProps) {
                     style={{ width: `${parseFloat(raiseProgress) > 100 ? "100" : raiseProgress}%` }}
                 ></div>
             </div>
-            <p className="text-center">
+            <p>
                 Raised: {`${totalRaised !== undefined ? localizeNumber(paymentTokenToNum(totalRaised)) : "..."}`} /{" "}
                 {localizeNumber(project.totalRaising)} USDC
             </p>
