@@ -1,3 +1,5 @@
+"use client"
+
 import { useCallback, useState } from "react"
 import { useGoogleReCaptcha } from "react-google-recaptcha-v3"
 
