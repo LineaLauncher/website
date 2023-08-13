@@ -2,18 +2,10 @@
     "extends": ["next/core-web-vitals"],
     "plugins": ["jsx-a11y"],
     "rules": {
-        "indent": ["warn", 4, { "SwitchCase": 1 }],
-        "semi": ["warn", "never"],
-        "arrow-parens": ["warn", "as-needed"],
-        "array-bracket-spacing": ["warn", "never"],
-        "comma-style": ["warn", "last"],
-        "quotes": ["warn", "double"],
         "jsx-a11y/alt-text": "error",
         "jsx-a11y/anchor-is-valid": "error",
         "jsx-a11y/label-has-for": "error",
         "jsx-a11y/no-autofocus": "error",
-        "jsx-a11y/no-noninteractive-tabindex": "error",
-        "object-curly-spacing": ["warn", "always"],
-        "complexity": ["warn", 20]
+        "jsx-a11y/no-noninteractive-tabindex": "error"
     }
 }
