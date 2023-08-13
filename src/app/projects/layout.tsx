@@ -1,6 +1,5 @@
 "use client"
 
-import { Metadata } from "next"
 import { Transaction } from "@/types/transaction"
 import { useCallback, useState } from "react"
 
@@ -34,26 +33,4 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
             </div>
         </InvestmentProvider>
     )
-}
-
-export const metadata: Metadata = {
-    // metadataBase: {
-    // }
-    title: "LineaLauncher",
-    description: "See and invest in IDOs and projects on LineaLauncher, a decentralized IDO platform on Linea.",
-    applicationName: "LineaLauncher",
-    keywords: [
-        "Linea",
-        "LineaLauncher",
-        "IDO",
-        "Launchpad",
-        "Linea Launchpad",
-        "Linea IDO",
-        "LineaLauncher IDO",
-        "LineaLauncher Launchpad",
-    ],
-    themeColor: "#000000",
-    icons: {
-        icon: "favicon.ico",
-    },
 }
