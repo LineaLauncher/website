@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     ],
     themeColor: "#000000",
     icons: {
-        icon: "/favicon.ico",
+        icon: "favicon.ico",
     },
     // openGraph: {
     //     type: "website",
