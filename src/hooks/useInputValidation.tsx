@@ -123,7 +123,7 @@ export default function useValidation(
                 }
             }
         },
-        [currentInvestmentAmount, maximumInvestableNumber, valueChangeIsOk, setCurrentInvestmentAmount]
+        [paymentTokenDecimals, currentInvestmentAmount, maximumInvestableNumber, valueChangeIsOk, setCurrentInvestmentAmount]
     )
 
     return { handleInputChange, onKeyDown }
