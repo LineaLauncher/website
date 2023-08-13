@@ -1,11 +1,12 @@
 "use client"
 
 import { Transaction } from "@/types/transaction"
-import { useCallback, useState } from "react"
+import { Suspense, useCallback, useState } from "react"
 
 import InvestmentProvider from "@/providers/InvestmentProvider"
 import TransactionBoxProvider from "@/providers/TransactionBoxProvider"
 import TransactionBox from "@/components/TransactionBox"
+import ProjectsLoading from "@/components/ProjectsLoading"
 
 export default function ProjectsLayout({ children }: { children: React.ReactNode }) {
     const [transactions, setTransactions] = useState<Transaction[]>([])
@@ -20,7 +21,9 @@ export default function ProjectsLayout({ children }: { children: React.ReactNode
 
     return (
         <InvestmentProvider>
-            <TransactionBoxProvider appendTransaction={appendTransaction}>{children}</TransactionBoxProvider>
+            <TransactionBoxProvider appendTransaction={appendTransaction}>
+                <Suspense fallback={<ProjectsLoading />}>{children}</Suspense>
+            </TransactionBoxProvider>
             <div className="flex flex-col absolute right-10 bottom-10 space-y-4">
                 {transactions.map((transaction, index) => (
                     <TransactionBox
