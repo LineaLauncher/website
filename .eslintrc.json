@@ -4,8 +4,23 @@
     "rules": {
         "jsx-a11y/alt-text": "error",
         "jsx-a11y/anchor-is-valid": "error",
-        "jsx-a11y/label-has-for": "error",
         "jsx-a11y/no-autofocus": "error",
-        "jsx-a11y/no-noninteractive-tabindex": "error"
+        "jsx-a11y/no-noninteractive-tabindex": "error",
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ],
+        "jsx-a11y/label-has-for": [
+            "error",
+            {
+                "required": {
+                    "some": ["nesting", "id"]
+                }
+            }
+        ]
     }
 }

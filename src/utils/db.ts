@@ -1,11 +1,11 @@
 import "server-only"
 
-import { type Timestamp, collection, getDocs, getFirestore, doc, getDoc } from "firebase/firestore"
+import { type Timestamp, collection, getDocs, getFirestore, doc, getDoc, addDoc } from "firebase/firestore"
+import { PerProjectInvestmentsFirebaseResponse } from "@/types/perprojectinvestments"
 import { FirebaseProjectResponse, Project } from "@/types/project"
 import { initializeApp } from "firebase/app"
 
 import validateProject from "./validateproject"
-import { PerProjectInvestmentsFirebaseResponse } from "@/types/perprojectinvestments"
 import discardInvalidInvestments from "./discardInvalidInvestments"
 import transformInvestments from "./transformInvestments"
 
@@ -59,6 +59,17 @@ export async function getPerProjectInvestments(address: string) {
     const validInvestments = discardInvalidInvestments(investmentsPerProject)
 
     return transformInvestments(validInvestments)
+}
+
+export async function addApplication(form: ApplyFormData) {
+    const newForm = {
+        ...form,
+        refundOption: form.refundOption === "Yes" ? true : false,
+        launchDate: new Date(form.launchDate),
+    }
+
+    const collectionRef = collection(db, "applications")
+    await addDoc(collectionRef, newForm)
 }
 
 function transformData(data: Partial<FirebaseProjectResponse>): Partial<Project> | null {
