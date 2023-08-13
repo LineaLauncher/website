@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import clsx from "clsx"
 import EthereumProvider from "@/providers/EthereumProvider"
+import WrappedNextUIProvider from "@/providers/WrappedNextUIProvider"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
@@ -48,18 +49,21 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+    // min-h-screen flex flex-col
     return (
         <html lang="en">
-            <body className={clsx("bg-black min-h-screen", robotoMono.className)}>
-                <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
-                    <div className="min-h-screen flex flex-col text-white">
-                        <header>
-                            <Navbar />
-                        </header>
-                        {children}
-                        <Footer />
-                    </div>
-                </EthereumProvider>
+            <body className={clsx("min-h-screen", robotoMono.className)}>
+                <WrappedNextUIProvider>
+                    <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
+                        <div className="dark text-foreground bg-background min-h-screen flex flex-col">
+                            <header>
+                                <Navbar />
+                            </header>
+                            {children}
+                            <Footer />
+                        </div>
+                    </EthereumProvider>
+                </WrappedNextUIProvider>
             </body>
         </html>
     )
