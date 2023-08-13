@@ -7,7 +7,7 @@ type OptionButtonsProps = {
     warning: boolean
 }
 
-export function OptionButtons({ label, name, options, selectedOption, onOptionChange, warning }: OptionButtonsProps) {
+export default function OptionButtons({ label, name, options, selectedOption, onOptionChange, warning }: OptionButtonsProps) {
     return (
         <div className="flex flex-col space-y-2">
             <label htmlFor={name} className="block font-bold mb-2">

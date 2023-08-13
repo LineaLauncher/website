@@ -7,7 +7,7 @@ type TextAreaFieldProps = {
     required?: boolean
 }
 
-export function TextAreaField({ label, name, placeholder, maxLength, handleInputChange, required }: TextAreaFieldProps) {
+export default function TextAreaField({ label, name, placeholder, maxLength, handleInputChange, required }: TextAreaFieldProps) {
     return (
         <div className="flex flex-col space-y-2">
             <label htmlFor={name} className="block font-bold mb-2">
