@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function Background() {
     return (
         <div className="relative z-0">
-            <div className="fixed dark:md:block opacity-30 -bottom-[40%] -left-[20%] z-0">
+            <div className="fixed dark:md:block opacity-20 -bottom-[40%] -left-[20%] z-0">
                 <div style={{ width: "100%", height: "100%", position: "relative" }}>
                     <Image
                         src="/left.png"
@@ -14,7 +14,7 @@ export default function Background() {
                     />
                 </div>
             </div>
-            <div className="fixed dark:md:block opacity-30 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] rotate-12 z-0">
+            <div className="fixed dark:md:block opacity-20 -top-[80%] -right-[60%] 2xl:-top-[60%] 2xl:-right-[45%] rotate-12 z-0">
                 <Image
                     src="/right.png"
                     alt="right background"
