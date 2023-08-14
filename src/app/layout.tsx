@@ -56,7 +56,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <WrappedNextUIProvider>
                     <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
                         <div className="dark text-foreground bg-background min-h-screen flex flex-col">
-                            <header className="pt-6">
+                            <header className="z-20">
                                 <Navbar />
                             </header>
                             <div className="z-10 flex-grow">{children}</div>
