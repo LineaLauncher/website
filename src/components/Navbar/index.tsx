@@ -42,7 +42,7 @@ export default function Nav() {
                     isOpen ? "block" : "hidden"
                 )}
             >
-                <div className="flex flex-col md:flex-row items-start md:items-center space-x-4">
+                <div className="flex flex-col md:flex-row items-start md:items-center">
                     <NavButton text="IDOs" path="/projects" />
                     <NavButton text="Apply for IDO" path="/apply" />
                     <NavButton text="How it Works" path="/demo" />
