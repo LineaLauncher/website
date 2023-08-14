@@ -1,11 +1,10 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ConnectButton } from "@rainbow-me/rainbowkit"
 
 import NavButton from "./NavButton"
 import Link from "next/link"
-import { Link as NextUILink } from "@nextui-org/react"
 
 import {
     Button,
@@ -18,13 +17,12 @@ import {
     NavbarMenuToggle,
 } from "@nextui-org/react"
 import Logo from "./Logo"
-import { set } from "firebase/database"
 
 export default function Nav() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <Navbar onMenuOpenChange={setIsMenuOpen}>
+        <Navbar onMenuOpenChange={setIsMenuOpen} className="bg-transparent">
             <NavbarContent>
                 <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} className="sm:hidden" />
                 <NavbarBrand>
@@ -51,18 +49,16 @@ export default function Nav() {
             </NavbarContent>
 
             <NavbarMenu className="bg-black text-white flex flex-col space-y-2 pt-4">
-                <NavbarMenuItem onClick={() => setIsMenuOpen(false)}>
-                    <Link href="/projects">
-                        IDOs
-                    </Link>
+                <NavbarMenuItem>
+                    <Link href="/projects">IDOs</Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem onClick={() => setIsMenuOpen(false)}>
+                <NavbarMenuItem>
                     <Link href="/apply">Apply for IDO</Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem onClick={() => setIsMenuOpen(false)}>
+                <NavbarMenuItem>
                     <Link href="/demo">How it Works</Link>
                 </NavbarMenuItem>
-                <NavbarMenuItem onClick={() => setIsMenuOpen(false)}>
+                <NavbarMenuItem>
                     <Link href="/staking">Staking</Link>
                 </NavbarMenuItem>
                 <NavbarMenuItem className="text-white">

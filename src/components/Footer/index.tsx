@@ -6,7 +6,7 @@ import FooterLinkItem from "./FooterLinkItem"
 
 export default function Footer() {
     return (
-        <footer className="p-4 md:p-6 border-t border-gray-800 flex space-y-2 flex-col items-center justify-center md:flex-row md:space-y-0 md:justify-between">
+        <footer className="p-4 md:p-6 border-t border-gray-800 flex space-y-2 flex-col items-center justify-center md:flex-row md:space-y-0 md:justify-between z-10">
             <div className="flex flex-row items-center justify-center mt-2 md:mt-0">
                 <div className="flex flex-col md:flex-row items-center md:space-x-4">
                     <p className="mb-2 md:mb-0 md:mr-4 text-center">&copy; 2023 LineaLauncher</p>

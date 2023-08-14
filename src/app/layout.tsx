@@ -8,6 +8,7 @@ import Footer from "@/components/Footer"
 import clsx from "clsx"
 import EthereumProvider from "@/providers/EthereumProvider"
 import WrappedNextUIProvider from "@/providers/WrappedNextUIProvider"
+import Background from "@/components/Background"
 
 const robotoMono = Roboto_Mono({ subsets: ["latin"] })
 
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     ],
     themeColor: "#000000",
     icons: {
-        icon: "/favicon.svg",
+        icon: "/favicon.ico",
         apple: "/apple-touch-icon.png",
     },
     manifest: "/manifest.json",
@@ -49,19 +50,19 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-    // min-h-screen flex flex-col
     return (
         <html lang="en">
             <body className={clsx("min-h-screen", robotoMono.className)}>
                 <WrappedNextUIProvider>
                     <EthereumProvider fontFamily={robotoMono.style.fontFamily}>
                         <div className="dark text-foreground bg-background min-h-screen flex flex-col">
-                            <header>
+                            <header className="pt-6">
                                 <Navbar />
                             </header>
-                            {children}
+                            <div className="z-10 flex-grow">{children}</div>
                             <Footer />
                         </div>
+                        <Background />
                     </EthereumProvider>
                 </WrappedNextUIProvider>
             </body>

@@ -29,6 +29,12 @@ export default function Home() {
                             LineaLauncher.
                         </p>
                         <div className="flex flex-col md:flex-row md:space-x-2 pr-2">
+                            {/* <Button className="mt-4 hover:scale-105" color="primary" variant="bordered">
+                                <Link href="/projects">Invest in IDOs</Link>
+                            </Button>
+                            <Button className="mt-4 hover:scale-105" color="primary" variant="bordered">
+                                <Link href="/apply">Launch your Project</Link>
+                            </Button> */}
                             <Link
                                 href="/projects"
                                 className="inline-block mt-2 md:mt-4 px-2 md:px-6 py-1 md:py-2 text-sm md:text-lg font-semibold border-2 border-white rounded hover:bg-white hover:text-black transition-colors"
@@ -57,6 +63,12 @@ export default function Home() {
                     thing.
                 </p>
                 <div className="flex flex-col md:flex-row md:space-x-2">
+                    {/* <Button className="mt-4 hover:scale-105" color="primary" variant="bordered">
+                        <Link href="/demo">See Investing Step by Step</Link>
+                    </Button>
+                    <Button className="mt-4 hover:scale-105" color="primary" variant="bordered">
+                        <Link href="/demo">Read the Docs</Link>
+                    </Button> */}
                     <Link
                         href="/demo"
                         className="inline-block mt-2 md:mt-4 px-2 md:px-6 py-1 md:py-2 text-sm md:text-lg font-semibold border-2 border-white rounded hover:bg-white hover:text-black transition-colors"

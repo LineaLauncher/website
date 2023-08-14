@@ -209,7 +209,7 @@ const ProjectCardDemo = ({ step }: ProjectCardDemoProps) => {
             </p>
             <p>
                 {step === undefined
-                    ? "Vesting: Monthly 25%"
+                    ? "Vesting: 25% Monthly"
                     : "Vesting: 25% each day after 23 August 2023, 8:00 AM UTC"}
             </p>
             <div className="flex flex-row items-center space-x-2">
