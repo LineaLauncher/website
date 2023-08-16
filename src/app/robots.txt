@@ -1,4 +1,3 @@
 User-agent: *
-Disallow: /?r*
 Allow: /
 Sitemap: https://linealauncher.com/sitemap.xml
